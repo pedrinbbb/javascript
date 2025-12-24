@@ -1,51 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            text-align: center;color: white;
+            background-color: rgb(104, 158, 206);
+            font: bold 1.3em arial;
+            text-shadow: 1px 2px 10px rgba(0, 0, 0, 0.493);
+        }
+        section{
+            background-color: white;
+            border-radius: 10px;
+            width: 500px;
+            margin: auto;
+            padding: 15px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.473);
+        }
+        div{
+            text-align: center;
+            color: black;
+            padding: 8px;
+        }
+    </style>
 </head>
 <body>
-    
-   <h1>dia da semana</h1>
-   <input type="text" id="dia">
-   <input type="button" value="verificar" onclick="diasemana()">
-   <div id="res"></div>
+    <header>
+        <h1>Horario do dia</h1>
+    </header>
+    <section>
+        <div id="msg">
+            teste
+        </div>
+        <div id="foto">
+            <img id="imagem" src="desafio005/img/fotomanha2.png" alt="" height="300px">
+        </div>
+    </section>
+    <footer>
+        <p>&copy; Pedro lucas</p>
+    </footer>
 
 
-    </div>
     <script>
-        function diasemana(){
-            var dia = Number(document.getElementById('dia').value)
-            var res = document.getElementById('res')
-            
-            switch (dia){
-        case 0:
-            res.innerHTML = ('Domingo')
-            break
-        case 1:
-            res.innerHTML = 'Segunda'
-            break
-        case 2:
-            res.innerHTML = 'Terça'
-            break
-        case 3:
-            res.innerHTML = 'Quarta'
-            break
-        case 4:
-            res.innerHTML = 'Quinta'
-            break
-        case 5:
-            res.innerHTML = 'Sexta'
-            break
-        case 6:
-            res.innerHTML = 'Sábado'
-            break
-        default:
-            res.innerHTML = 'ERRO! Dia inválido'
-    }
+        var msg = document.getElementById('msg')
+        var img = document.getElementById('imagem')
+        var data = new Date()
+        var hora = data.getHours()
+        msg.innerHTML = `Agora sao ${hora} horas`
+        if (hora >= 5 && hora < 12){
+            img.src = 'desafio005/img/fotomanha2.png'
+            msg.innerText = `Bom dia, agora sao ${hora} horas`
+        }else if(hora >= 13 && hora < 19){
+            img.src = 'desafio005/img/fototarde2.png'
+            msg.innerText = `Boa tarde, agora sao ${hora} horas`
+        }else{
+            img.src = 'desafio005/img/fotonoite2.png'
+            msg.innerText = `Boa noite, agora sao ${hora} horas`
         }
     </script>
-
 </body>
 </html>
