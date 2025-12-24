@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+    <h1>Calculando notas</h1>
+    <input type="number" id="nota1" placeholder="Digite sua nota...">
+    <input type="number" id="nota2" placeholder="Digite sua nota...">
+    <input type="button" value="calcular" onclick="calcular()">
+    <p>Resultado:</p>
+    <p id="res">
+    </p>
+
+    <script>
+        function calcular(){
+            var nota1 = document.getElementById('nota1')
+            var nota2 = document.getElementById('nota2')
+            var res = document.getElementById('res')
+            var n1 = Number(nota1.value)
+            var n2 = Number(nota2.value)
+            var media = (n1 + n2) / 2
+            res.innerHTML = `a media entre ${n1} e ${n2} é igual a ${media}`
+            if (media >= 7){
+                res.innerHTML = `sua nota foi de ${media} e voce foi aprovado!`
+            }else{
+                res.innerHTML = `sua nota foi de ${media} e voce foi reprovado!`
+            }
+        }
+    </script>
+</body>
+</html>
