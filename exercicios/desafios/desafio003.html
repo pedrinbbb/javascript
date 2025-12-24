@@ -1,29 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desafio naturalidade</title>
+    <title>Document</title>
 </head>
 <body>
-    <h1>desafio naturalidade</h1>
-    <input type="text" id="txtp">
-    <input type="button" value="verificar" onclick="verificar()">
+    <h1>Vota ou nao vota</h1>
+    <input type="text" id="idade" placeholder="Digite sua idade...">
+    <input type="button" value="verificar" id="verificar" onclick="verificar()">
     <div id="res">
-        resultado
+
     </div>
 
     <script>
-        var txtp = String(window.document.getElementById('txtp'))
-        var res = window.document.getElementById('res')
+
         function verificar(){
-            if (txtp != 'brasil'){
-                res.innerHTML = `voce é estrangeiro`
+        idade = document.getElementById('idade').value
+        var res = document.getElementById('res')
+       
+        if(idade < 16){
+            res.innerText = ('nao vota')
+        }else{
+            if(idade >= 16 && idade < 18 || idade > 65){
+                res.innerHTML = ('voto opcional')
             }else{
-                res.innerHTML = `voce é brasileiro`
+                res.innerHTML = ('voto obrigatorio')
             }
         }
+    }
+
     </script>
-    
+
 </body>
 </html>
