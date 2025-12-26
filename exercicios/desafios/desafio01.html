@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Sistema d multas</h1>
-    Velocidade do carro: <input type="text" name="txtvel" id="txtvel"> Km/h
+    Velocidade do carro: <input type="number" name="txtvel" id="txtvel"> Km/h
     <input type="button" value="Verificar" onclick="calcular()">
     <div id="res">
         <p>Resultado:</p>
@@ -20,7 +20,7 @@
         var vel = Number(txtv.value)
         res.innerHTML = `<p> sua velocidade atual é de ${vel}Km/h</p>`
         if (vel > 60){
-            res.innerHTML = `<p>sua velocidade atual é de ${vel} e voce ultrapassou a velocidade permitida<p/>`
+            res.innerHTML = `<p>sua velocidade atual é de ${vel}Km/h e voce ultrapassou a velocidade permitida<p/>`
         }
         res.innerHTML += '<p>dirija sempre com cuidado</p>'
     }

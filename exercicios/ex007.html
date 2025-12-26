@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>calculando notas</h1>
+    <form action="">
+        <p>Nota 1: 
+            <input type="number" name="txtnu" id="itxtnu">
+        </p>
+        <p>Nota 2: 
+            <input type="number" name="txtnu2" id="itxtnu2">
+        </p>
+        <input type="button" value="verificar" onclick="verificar()">
+        <p>Resultado: 
+        <div id="res">
+        </div>
+        </p>
+    </form>
+    <script>
+        function verificar(){
+            var txtnu = document.getElementById('itxtnu')
+            var txtnu2 = document.getElementById('itxtnu2')
+            var n1 = Number(txtnu.value)
+            var n2 = Number(txtnu2.value)
+            var res = document.getElementById('res')
+            var media = (n1 + n2) / 2
+            if(media >= 7){ 
+                res.innerHTML = `sua nota foi de ${media} e voce esta aprovado`
+            }else{
+                res.innerText = `sua nota foi de ${media} e voce esta reprovado`
+            }
+        }
+    </script>
+    
+</body>
+</html>
