@@ -1,23 +1,27 @@
-function verificar(){
+function contar(){
     var ini = document.getElementById('txti')
     var fim = document.getElementById('txtf')
     var passo = document.getElementById('txtp')
     var res = document.getElementById('res')
-
-    if(ini.value.length == 0||  fim.value.length == 0 || passo.value.length == 0){
-        window.alert('[ERRO!]Preencha os dados')
-
-    }else{  
-        res.innerHTML = 'contando '
-        var i = Number(ini.value)
-        var f = Number(fim.value)
-        var p = Number(passo.value)
-        if (i < f){
-            for(var c = i; c <= f; c += p)
+    if(ini.value.length == 0 || fim.value.length == 0 || passo.value.length == 0){
+        window.alert('Preencha todos os dados!')
+    }
+    else{
+        res.innerText = 'Contando:'
+        i = Number(ini.value)
+        f = Number(fim.value)
+        p = Number(passo.value)
+    if(p <= 0 ){
+        window.alert('Passo invalido! considerando valor 1')
+        p = 1
+    }
+    for(var c = i; c <= f; c += p){
             res.innerHTML += `${c} `
-        } else{
-            for(var c = i; c >= f; c -= p)
-                res.innerHTML = `${c} `
         }
+    if(i > f){
+        for(c = i; c >= f; c -= p){
+            res.innerHTML += `${c} `
+        }
+    }
     }
 }
