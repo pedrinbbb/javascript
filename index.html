@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Controle de Estoque</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background: #eee;
+    }
+
+    .danger {
+      background: #dc3545;
+    }
+
+    .danger:hover {
+      background: #a71d2a;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📦 Controle de Estoque</h1>
+
+  <div class="container">
+    <input type="number" id="id" placeholder="ID do Produto">
+    <input type="text" id="nome" placeholder="Nome do Produto">
+    <input type="number" id="quantidade" placeholder="Quantidade">
+
+    <button onclick="cadastrarProduto()">Cadastrar Produto</button>
+    <button onclick="adicionarProduto()">Adicionar Quantidade</button>
+    <button onclick="removerProduto()">Remover Quantidade</button>
+    <button class="danger" onclick="excluirProduto()">Excluir Produto</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Quantidade</th>
+        </tr>
+      </thead>
+      <tbody id="estoque"></tbody>
+    </table>
+  </div>
+
+  <script>
+    let produtos = [];
+
+    function atualizarTabela() {
+      const tabela = document.getElementById("estoque");
+      tabela.innerHTML = "";
+
+      produtos.forEach(p => {
+        tabela.innerHTML += `
+          <tr>
+            <td>${p.id}</td>
+            <td>${p.nome}</td>
+            <td>${p.quantidade}</td>
+          </tr>
+        `;
+      });
+    }
+
+    function cadastrarProduto() {
+      const id = Number(document.getElementById("id").value);
+      const nome = document.getElementById("nome").value;
+      const quantidade = Number(document.getElementById("quantidade").value);
+
+      if (produtos.find(p => p.id === id)) {
+        alert("Produto já cadastrado!");
+        return;
+      }
+
+      produtos.push({ id, nome, quantidade });
+      atualizarTabela();
+    }
+
+    function adicionarProduto() {
+      const id = Number(document.getElementById("id").value);
+      const quantidade = Number(document.getElementById("quantidade").value);
+
+      const produto = produtos.find(p => p.id === id);
+      if (!produto) {
+        alert("Produto não encontrado!");
+        return;
+      }
+
+      produto.quantidade += quantidade;
+      atualizarTabela();
+    }
+
+    function removerProduto() {
+      const id = Number(document.getElementById("id").value);
+      const quantidade = Number(document.getElementById("quantidade").value);
+
+      const produto = produtos.find(p => p.id === id);
+      if (!produto || produto.quantidade < quantidade) {
+        alert("Quantidade inválida!");
+        return;
+      }
+
+      produto.quantidade -= quantidade;
+      atualizarTabela();
+    }
+
+    function excluirProduto() {
+      const id = Number(document.getElementById("id").value);
+      produtos = produtos.filter(p => p.id !== id);
+      atualizarTabela();
+    }
+  </script>
+
+</body>
+</html>
